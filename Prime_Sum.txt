@@ -1,0 +1,18 @@
+bool isprime(int n){
+  for(int i=2;i<=pow(n,.5);i++){
+      if(n%2==0) return false;
+  }
+  return true;
+}
+
+vector<int> Solution::primesum(int A) {
+    vector<int> v;
+    
+    for(int i=2;i<=A/2;i++){
+        if(isprime(i)&&isprime(A-i)) {
+            v.push_back(i);
+            v.push_back(A-i);  
+            return v;
+        }
+    }
+}
