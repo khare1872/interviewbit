@@ -1,0 +1,38 @@
+void lps(vector<int> &v,int m,string B){
+    int i = 1;
+    int length = 0;
+    while(i<m){
+        if(B[i]==B[length]){
+            v[i]=length+1;
+            length++;
+            i++;
+        }
+        else{
+            if(length!=0) length=v[length-1];
+            else i++;
+        }
+    }
+}
+int Solution::strStr(const string A, const string B) {
+    if(A.length()==0||B.length()==0||A.length()<B.length()) return -1;
+    int n = A.length();
+    int m = B.length();
+    int i =0;
+    int j =0;
+    vector<int> v(m,0);
+    lps(v,m,B);
+    while(i<n+m-1){
+        if(A[i]==B[j]) {
+            i++;
+            j++;
+        }
+        else {
+            if (j!=0){
+                j=v[j-1];
+            }
+            else i++;
+        }
+        if(j==m) return i-j;
+    }
+    return -1;
+}
