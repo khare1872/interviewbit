@@ -1,4 +1,4 @@
-//Top-down
+//Bottom-up
 int Solution::solve(vector<int> &A, vector<int> &B, int C) {
     vector<vector<int>> vec( A.size()+1 , vector<int> (C+1));
     for(int i = 0;i<=A.size();i++) vec[i][0]=0;
