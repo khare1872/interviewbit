@@ -15,3 +15,19 @@ int Solution::minPathSum(vector<vector<int> > &grid) {
         }
         return dp[n-1][m-1];
 }
+//Recursive + memoization
+ int solve(vector<vector<int>> grid,int n, int m, vector<vector<int>> &dp){
+        if(n==grid.size()-1&&m==grid[0].size()-1) return grid[grid.size()-1][grid[0].size()-1];
+        if(n>=grid.size()||m>=grid[0].size()) return INT_MAX;
+        if(dp[n][m]!=-1) return dp[n][m];
+        else {
+            return dp[n][m]=grid[n][m]+min(solve(grid,n+1,m,dp),solve(grid,n,m+1,dp));
+        }
+    }
+int Solution::minPathSum(vector<vector<int> > &grid) {
+     int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<int>> dp(n+1, vector<int>(m+1, -1));
+        //memset(dp,-1,sizeof(dp));
+        return solve(grid,0,0,dp);
+}
