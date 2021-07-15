@@ -10,16 +10,16 @@ void insert(vector<int>& v,int n){
     v[i]=temp;
 }
 void deletenode(vector<int>& v,int i){
-    swap(v[v.size()-1],v[i]);
+    swap(v[v.size()-1],v[i-1]);
     cout<<v[v.size()-1]<<" ";
     v.pop_back();
-    int j = 1;
-    while(j<v.size()){
-        if(v[j]>v[j-1]) j++;
-        if(v[j-1]>v[i]){
-            swap(v[j-1],v[i]);
-            i=j-1;
-            j=2*j-1;
+    int j = 2*i;
+    while(j<=v.size()){
+        if(j<v.size()&&v[j]>v[j-1]) j++;
+        if(v[j-1]>v[i-1]){
+            swap(v[j-1],v[i-1]);
+            i=j;
+            j=2*j;
         }
         else break;
     }
@@ -37,7 +37,7 @@ int main() {
     for(int i =0;i<n;i++) cout<<v[i]<<" ";
     cout<<endl<<"Heap sort using delete: ";
     for(int i =0;i<v.size();) {
-        deletenode(v,0);
+        deletenode(v,1);
     }
     
     return 0;
