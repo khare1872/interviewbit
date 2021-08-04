@@ -8,7 +8,7 @@ vector<int> Solution::solve(vector<int> &A, int B) {
     while(i<n&&B>0){
         if(A[i]!=n-i){
             int temp = A[i];
-            swap(A[i],A[m[n-i]]);
+            swap(A[i],    A[m[n-i]]);
             m[temp]=m[n-i];
             m[n-i]=i;
             B--;
