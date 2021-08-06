@@ -1,6 +1,6 @@
 int Solution::canCompleteCircuit(const vector<int> &A, const vector<int> &B) {
     int total = 0;
-    int current = 0;
+    int current  = 0;
     int ans =0;
     for(int i=0;i<A.size();i++){
         total+=A[i]-B[i];
